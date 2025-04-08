@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CargoManager.Application\CargoManager.Application.csproj" />
+    <ProjectReference Include="..\CargoManager.Core\CargoManager.Core.csproj" />
+    <ProjectReference Include="..\CargoManager.Logging\CargoManager.Logging.csproj" />
+  </ItemGroup>
+
+</Project>
