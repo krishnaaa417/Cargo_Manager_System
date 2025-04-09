@@ -8,13 +8,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CargoManager.Core\CargoManager.Core.csproj" />
+    <ProjectReference Include="..\CargoManager.Infrastructure\CargoManager.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="DTO%27s\" />
-    <Folder Include="Mappings\" />
-    <Folder Include="Services\" />
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="FluentAssertions" Version="8.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.3.1" />
   </ItemGroup>
 
 </Project>

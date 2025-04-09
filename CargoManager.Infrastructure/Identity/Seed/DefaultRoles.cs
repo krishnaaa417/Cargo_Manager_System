@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CargoManager.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,12 @@ namespace CargoManager.Infrastructure.Identity.Seed
     {
         public static async Task SeedAsync(RoleManager<IdentityRole> roleManager)
         {
-            string[] roles = { "Admin", "Customer", "Manager" }; // Add any roles you use
+            string[] roleNames = { "CUSTOMER", "ADMIN" };
 
-            foreach (var role in roles)
+            foreach (var role in roleNames)
             {
                 if (!await roleManager.RoleExistsAsync(role))
-                {
                     await roleManager.CreateAsync(new IdentityRole(role));
-                }
             }
         }
     }
