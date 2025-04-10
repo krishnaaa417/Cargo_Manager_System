@@ -12,8 +12,8 @@ namespace CargoManager.Application.Interfaces
     {
         Task<IEnumerable<CargoDto>> GetAllAsync();
         Task<CargoDto> GetByIdAsync(int id);
-        Task<CargoDto> CreateAsync(CreateCargoDto dto);
-        Task<bool> UpdateAsync(int id, UpdateCargoDto dto);
-        Task<bool> DeleteAsync(int id);
+        Task CreateAsync(CreateCargoDto dto);
+        Task UpdateAsync(UpdateCargoDto dto);
+        Task DeleteAsync(int id);
     }
 }

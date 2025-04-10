@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using CargoManager.Application.DTO_s.Cargo;
 using CargoManager.Application.Interfaces;
-using CargoManager.Application.Interfaces.Repository;
+
 using CargoManager.Core.Entities;
+using CargoManager.Core.Interfaces;
 using CargoManager.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,56 +16,48 @@ namespace CargoManager.Application.Services
 {
     public class CargoService : ICargoService
     {
-        private readonly IGenericRepository<Cargo> _cargoRepository;
+
+        private readonly IGenericRepository<Cargo> _repository;
         private readonly IMapper _mapper;
 
-        public CargoService(IGenericRepository<Cargo> cargoRepository, IMapper mapper)
+        public CargoService(IGenericRepository<Cargo> repository, IMapper mapper)
         {
-            _cargoRepository = cargoRepository;
+            _repository = repository;
             _mapper = mapper;
         }
 
         public async Task<IEnumerable<CargoDto>> GetAllAsync()
         {
-            var cargos = await _cargoRepository.GetAllAsync();
+            var cargos = await _repository.GetAllAsync();
             return _mapper.Map<IEnumerable<CargoDto>>(cargos);
         }
 
         public async Task<CargoDto> GetByIdAsync(int id)
         {
-            var cargo = await _cargoRepository.GetByIdAsync(id);
+            var cargo = await _repository.GetByIdAsync(id);
             return _mapper.Map<CargoDto>(cargo);
         }
 
-        public async Task<CargoDto> CreateAsync(CreateCargoDto dto)
+        public async Task CreateAsync(CreateCargoDto dto)
         {
             var cargo = _mapper.Map<Cargo>(dto);
-            await _cargoRepository.AddAsync(cargo);
-            return _mapper.Map<CargoDto>(cargo);
+            await _repository.AddAsync(cargo);
+            await _repository.SaveAsync();
         }
 
-        public async Task<bool> UpdateAsync(int id, UpdateCargoDto dto)
+        public async Task UpdateAsync(UpdateCargoDto dto)
         {
-            var cargo = await _cargoRepository.GetByIdAsync(id);
-            if (cargo == null) return false;
-
-            _mapper.Map(dto, cargo);
-            await _cargoRepository.UpdateAsync(cargo);
-            return true;
+            var cargo = _mapper.Map<Cargo>(dto);
+            _repository.Update(cargo);
+            await _repository.SaveAsync();
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var cargo = await _repository.GetByIdAsync(id);
+            _repository.Delete(cargo);
+            await _repository.SaveAsync();
         }
 
-        //public async Task<bool> DeleteAsync(int id)
-        //{
-        //    var cargo = await _cargoRepository.GetByIdAsync(id);
-        //    if (cargo == null) return false;
-
-        //    await _cargoRepository.DeleteAsync(cargo);
-        //    return true;
-        //}
     }
 }
