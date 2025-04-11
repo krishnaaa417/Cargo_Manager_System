@@ -17,5 +17,18 @@ namespace CargoManager.Infrastructure.Data
         }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Customer> Customers { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // I'm trying to create a FK relation ship code down so it will be easy to what happending inside this thingss
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(c => c.Cargos)
+                .WithOne(cg => cg.Customer)
+                .HasForeignKey(cg => cg.CustomerId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

@@ -33,8 +33,9 @@ namespace CargoManager.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateCargoDto dto)
         {
-            await _service.CreateAsync(dto);
-            return Ok();
+           // await _service.CreateAsync(dto);
+           var result = await _service.CreateAsync(dto);
+            return Ok(result);
         }
 
         [HttpPut]

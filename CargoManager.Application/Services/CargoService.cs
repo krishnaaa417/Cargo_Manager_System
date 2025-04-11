@@ -38,11 +38,11 @@ namespace CargoManager.Application.Services
             return _mapper.Map<CargoDto>(cargo);
         }
 
-        public async Task CreateAsync(CreateCargoDto dto)
+        public async Task<CargoDto> CreateAsync(CreateCargoDto dto)
         {
             var cargo = _mapper.Map<Cargo>(dto);
-            await _repository.AddAsync(cargo);
-            await _repository.SaveAsync();
+           var createdEntity =  await _repository.AddAsync(cargo);
+            return _mapper.Map<CargoDto>(createdEntity);
         }
 
         public async Task UpdateAsync(UpdateCargoDto dto)
@@ -58,6 +58,15 @@ namespace CargoManager.Application.Services
             _repository.Delete(cargo);
             await _repository.SaveAsync();
         }
+
+        public async Task<CargoDto> AddAsync(CreateCargoDto dto)
+        {
+            var cargo = _mapper.Map<Cargo>(dto);
+            await _repository.AddAsync(cargo);
+            await _repository.SaveAsync();
+            return _mapper.Map<CargoDto>(cargo);
+        }
+
 
     }
 }

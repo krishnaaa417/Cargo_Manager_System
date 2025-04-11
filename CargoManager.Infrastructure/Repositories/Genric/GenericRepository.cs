@@ -24,9 +24,11 @@ namespace CargoManager.Infrastructure.Repositories.Genric
 
         public async Task<T> GetByIdAsync(int id) => await _dbSet.FindAsync(id);
 
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            await _context.Set<T>().AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         public void Update(T entity) => _dbSet.Update(entity);

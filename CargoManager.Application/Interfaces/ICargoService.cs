@@ -12,7 +12,7 @@ namespace CargoManager.Application.Interfaces
     {
         Task<IEnumerable<CargoDto>> GetAllAsync();
         Task<CargoDto> GetByIdAsync(int id);
-        Task CreateAsync(CreateCargoDto dto);
+        Task<CargoDto> CreateAsync(CreateCargoDto dto);
         Task UpdateAsync(UpdateCargoDto dto);
         Task DeleteAsync(int id);
     }

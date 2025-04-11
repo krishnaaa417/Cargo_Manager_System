@@ -10,8 +10,11 @@ namespace CargoManager.Core.Entities
     {
         public int Id { get; set; }  // Primary Key
         public string Name { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        // public string Email { get; set; }
+        // public string Phone { get; set; }
         public string Address { get; set; }
+
+        /// My Navigation Propertyy
+        public ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
     }
 }

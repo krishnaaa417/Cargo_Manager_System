@@ -8,9 +8,10 @@ namespace CargoManager.Application.DTO_s.Cargo
 {
     public class CreateCargoDto
     {
-        public string Name { get; set; }
+        public string Description { get; set; }
         public double Weight { get; set; }
-        public string Destination { get; set; }
+       // public string Destination { get; set; }
        // public DateTime DepartureDate { get; set; }
+       public int CustomerId {  get; set; } // here I'm assigned  cargo to customer
     }
 }
