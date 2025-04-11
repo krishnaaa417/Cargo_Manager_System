@@ -16,6 +16,6 @@ namespace CargoManager.Infrastructure.Data
 
         }
         public DbSet<Cargo> Cargos { get; set; }
-
+        public DbSet<Customer> Customers { get; set; }
     }
 }
