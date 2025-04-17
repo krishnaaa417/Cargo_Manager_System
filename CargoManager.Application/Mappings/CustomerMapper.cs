@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CargoManager.Application.DTO_s.CargoTrackingDtos;
 using CargoManager.Application.DTO_s.Customer;
 using CargoManager.Core.Entities;
 using System;
@@ -14,7 +15,9 @@ namespace CargoManager.Application.Mappings
         public CustomerMapper()
         {
             CreateMap<Customer, CustomerDto>().ReverseMap();
-            CreateMap<CreateCustomerDto,Customer>();
+            CreateMap<CreateCustomerDto, Customer>();
+
+            
         }
     }
 }

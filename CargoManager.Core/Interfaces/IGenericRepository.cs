@@ -15,5 +15,7 @@ namespace CargoManager.Core.Interfaces
         void Delete(T entity);
         Task SaveAsync();
         Task<T> AddAsync(T entity);
+        //Task AddAsync(Entities.Payment payment);
+       // Task GetByOrderIdAsync(string razorpayOrderId);
     }
 }

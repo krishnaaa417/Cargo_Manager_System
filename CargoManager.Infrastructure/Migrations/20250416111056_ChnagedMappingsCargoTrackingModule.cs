@@ -5,7 +5,7 @@
 namespace CargoManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateRegisterDbo : Migration
+    public partial class ChnagedMappingsCargoTrackingModule : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

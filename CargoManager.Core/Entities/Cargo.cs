@@ -18,5 +18,7 @@ namespace CargoManager.Core.Entities
 
         public int? CustomerId { get; set; } // here I'm created FK  relationship
         public Customer Customer { get; set; } //Navigation
+
+        public ICollection<CargoTracking> Trackings { get; set; }
     }
 }

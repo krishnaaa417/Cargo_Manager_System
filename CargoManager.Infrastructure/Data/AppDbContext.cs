@@ -18,6 +18,11 @@ namespace CargoManager.Infrastructure.Data
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<CargoTracking> CargoTrackings { get; set; }
+
+        public DbSet<PaymentOrder> PaymentOrders { get; set; }
+
+        public DbSet<Payment> Payments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,6 +34,15 @@ namespace CargoManager.Infrastructure.Data
                 .WithOne(cg => cg.Customer)
                 .HasForeignKey(cg => cg.CustomerId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Cargo → CargoTracking (One-to-Many)
+            modelBuilder.Entity<CargoTracking>()
+                .HasOne(ct => ct.Cargo)
+                .WithMany(c => c.Trackings)
+                .HasForeignKey(ct => ct.CargoId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
+
+
     }
 }

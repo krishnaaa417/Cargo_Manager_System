@@ -1,4 +1,5 @@
-﻿using CargoManager.Core.Interfaces;
+﻿using CargoManager.Core.Entities;
+using CargoManager.Core.Interfaces;
 using CargoManager.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,5 +37,10 @@ namespace CargoManager.Infrastructure.Repositories.Genric
         public void Delete(T entity) => _dbSet.Remove(entity);
 
         public async Task SaveAsync() => await _context.SaveChangesAsync();
+
+        //public Task AddAsync(Payment payment)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

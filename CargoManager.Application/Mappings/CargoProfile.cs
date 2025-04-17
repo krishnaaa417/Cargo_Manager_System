@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CargoManager.Application.DTO_s.Cargo;
+using CargoManager.Application.DTO_s.CargoTrackingDtos;
 using CargoManager.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace CargoManager.Application.Mappings
             CreateMap<CargoProfile, CargoDto>().ReverseMap();
             CreateMap<CargoProfile, CreateCargoDto>().ReverseMap();
             CreateMap<CargoProfile, UpdateCargoDto>().ReverseMap();
+
+           
         }
     }
 }
