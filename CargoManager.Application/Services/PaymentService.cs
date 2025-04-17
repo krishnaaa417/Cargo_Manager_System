@@ -9,6 +9,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Payment = CargoManager.Core.Entities.Payment;
+
 
 namespace CargoManager.Application.Services
 {
@@ -39,7 +41,7 @@ namespace CargoManager.Application.Services
 
             string razorpayOrderId = order["id"].ToString();
 
-            var payment = new CargoManager.Core.Entities.Payment
+            var payment = new Payment
             {
                 RazorpayOrderId = order["id"].ToString(),
                 RazorpayPaymentId = null, // will be updated after payment

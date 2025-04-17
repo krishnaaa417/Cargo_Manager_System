@@ -23,6 +23,8 @@ namespace CargoManager.Infrastructure.Data
         public DbSet<PaymentOrder> PaymentOrders { get; set; }
 
         public DbSet<Payment> Payments { get; set; }
+
+        public DbSet<Delivery> Deliveries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
