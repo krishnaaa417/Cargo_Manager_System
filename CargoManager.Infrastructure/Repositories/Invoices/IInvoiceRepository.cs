@@ -10,9 +10,9 @@ namespace CargoManager.Infrastructure.Repositories.Invoices
 {
     public interface IInvoiceRepository
     {
-        Task<Invoice> AddAsync(Invoice invoice);
+        //Task<Invoice> AddAsync(Invoice invoice);
 
-        Task<Invoice?> GetByIdAsync(int id);
+        //Task<Invoice?> GetByIdAsync(int id);
         //Task AddAsync(Invoice invoice);
         //Task GetAllAsync();
         //Task GetByInvoiceNumberAsync(string invoiceNumber);
