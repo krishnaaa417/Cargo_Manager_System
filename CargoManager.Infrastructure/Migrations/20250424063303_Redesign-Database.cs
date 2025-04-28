@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CargoManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedCargoTrackingModule : Migration
+    public partial class RedesignDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -215,6 +215,29 @@ namespace CargoManager.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Deliveries",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CargoId = table.Column<int>(type: "int", nullable: false),
+                    DeliveryStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EstimatedDeliveryDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeliveredDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Remarks = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Deliveries", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Deliveries_Cargos_CargoId",
+                        column: x => x.CargoId,
+                        principalTable: "Cargos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -263,6 +286,11 @@ namespace CargoManager.Infrastructure.Migrations
                 name: "IX_CargoTrackings_CargoId",
                 table: "CargoTrackings",
                 column: "CargoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Deliveries_CargoId",
+                table: "Deliveries",
+                column: "CargoId");
         }
 
         /// <inheritdoc />
@@ -285,6 +313,9 @@ namespace CargoManager.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "CargoTrackings");
+
+            migrationBuilder.DropTable(
+                name: "Deliveries");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -5,21 +5,21 @@
 namespace CargoManager.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedPaymentModule : Migration
+    public partial class AddedCustomersProps : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
-                name: "IsPaid",
-                table: "Payments",
-                type: "bit",
+            migrationBuilder.AddColumn<string>(
+                name: "Email",
+                table: "Customers",
+                type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
-                name: "Status",
-                table: "Payments",
+                name: "Phone",
+                table: "Customers",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
@@ -29,12 +29,12 @@ namespace CargoManager.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "IsPaid",
-                table: "Payments");
+                name: "Email",
+                table: "Customers");
 
             migrationBuilder.DropColumn(
-                name: "Status",
-                table: "Payments");
+                name: "Phone",
+                table: "Customers");
         }
     }
 }
