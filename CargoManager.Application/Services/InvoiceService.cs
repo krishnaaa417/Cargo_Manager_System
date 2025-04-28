@@ -11,35 +11,35 @@ using System.Threading.Tasks;
 
 namespace CargoManager.Application.Services
 {
-    public class InvoiceService : IInvoiceService
+    public class InvoiceService 
     {
-        private readonly IInvoiceRepository _invoiceRepository;
-        private readonly IMapper _mapper;
+        //private readonly IInvoiceRepository _invoiceRepository;
+        //private readonly IMapper _mapper;
 
-        public InvoiceService(IInvoiceRepository invoiceRepository, IMapper mapper)
-        {
-            _invoiceRepository = invoiceRepository;
-            _mapper = mapper;
-        }
+        //public InvoiceService(IInvoiceRepository invoiceRepository, IMapper mapper)
+        //{
+        //    _invoiceRepository = invoiceRepository;
+        //    _mapper = mapper;
+        //}
 
-        public async Task<Invoice> CreateInvoiceAsync(int customerId, int cargoId, decimal amount)
-        {
-            var invoice = new Invoice
-            {
-                CustomerId = customerId,
-                CargoId = cargoId,
-                Amount = amount,
-                InvoiceDate = DateTime.UtcNow,
-                InvoiceNumber = $"INV-{new Random().Next(1000, 9999)}"
-            };
+        //public async Task<Invoice> CreateInvoiceAsync(int customerId, int cargoId, decimal amount)
+        //{
+        //    var invoice = new Invoice
+        //    {
+        //        CustomerId = customerId,
+        //        CargoId = cargoId,
+        //        Amount = amount,
+        //        InvoiceDate = DateTime.UtcNow,
+        //        InvoiceNumber = $"INV-{new Random().Next(1000, 9999)}"
+        //    };
 
-            return await _invoiceRepository.AddAsync(invoice);
-        }
+        //    return await _invoiceRepository.AddAsync(invoice);
+        //}
 
-        public async Task<Invoice?> GetInvoiceAsync(int id)
-        {
-            return await _invoiceRepository.GetByIdAsync(id);
-        }
+        //public async Task<Invoice?> GetInvoiceAsync(int id)
+        //{
+        //    return await _invoiceRepository.GetByIdAsync(id);
+        //}
 
         //public async Task<InvoiceDto> CreateInvoiceAsync(CreateInvoiceDto dto)
         //{

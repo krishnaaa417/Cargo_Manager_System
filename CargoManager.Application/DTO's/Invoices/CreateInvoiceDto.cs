@@ -8,8 +8,8 @@ namespace CargoManager.Application.DTO_s.Invoices
 {
     public class CreateInvoiceDto
     {
-        public int CargoId { get; set; }
-        public int CustomerId { get; set; }
-        public decimal Amount { get; set; }
+        //public int CargoId { get; set; }
+        //public int CustomerId { get; set; }
+        //public decimal Amount { get; set; }
     }
 }

@@ -14,66 +14,66 @@ using Payment = CargoManager.Core.Entities.Payment;
 
 namespace CargoManager.Application.Services
 {
-    public class PaymentService : IPaymentService
+    public class PaymentService 
     {
         //private readonly IPaymentRepository _paymentRepository;
         // private string razorpayOrderId;
 
-        private readonly IPaymentRepository _paymentRepository;
+        //private readonly IPaymentRepository _paymentRepository;
 
-        public PaymentService(IPaymentRepository paymentRepository)
-        {
-            _paymentRepository = paymentRepository;
-        }
+        //public PaymentService(IPaymentRepository paymentRepository)
+        //{
+        //    _paymentRepository = paymentRepository;
+        //}
 
-        public async Task<string> CreatePaymentAsync(CreatePaymentDto dto)
-        {
-            RazorpayClient client = new RazorpayClient("rzp_test_iS4ZXWqjE5NVAq", "Y938V0KAAzaJIketwxBQOTlB");
+        //public async Task<string> CreatePaymentAsync(CreatePaymentDto dto)
+        //{
+        //    RazorpayClient client = new RazorpayClient("rzp_test_iS4ZXWqjE5NVAq", "Y938V0KAAzaJIketwxBQOTlB");
 
-            Dictionary<string, object> options = new()
-            {
-                { "amount", dto.Amount * 100 },
-                { "currency", "INR" },
-                { "payment_capture", 1 }
-            };
+        //    Dictionary<string, object> options = new()
+        //    {
+        //        { "amount", dto.Amount * 100 },
+        //        { "currency", "INR" },
+        //        { "payment_capture", 1 }
+        //    };
 
-            Order order = client.Order.Create(options);
+        //    Order order = client.Order.Create(options);
 
-            string razorpayOrderId = order["id"].ToString();
+        //    string razorpayOrderId = order["id"].ToString();
 
-            var payment = new Payment
-            {
-                RazorpayOrderId = order["id"].ToString(),
-                RazorpayPaymentId = null, // will be updated after payment
-                RazorpaySignature = null, // will be updated after verification
-                Amount = dto.Amount,
-                IsPaid = false,
-                Status = "Created"
-            };
+        //    var payment = new Payment
+        //    {
+        //        RazorpayOrderId = order["id"].ToString(),
+        //        RazorpayPaymentId = null, // will be updated after payment
+        //        RazorpaySignature = null, // will be updated after verification
+        //        Amount = dto.Amount,
+        //        IsPaid = false,
+        //        Status = "Created"
+        //    };
 
 
-            await _paymentRepository.AddAsync(payment);
-            //return order["id"].ToString();
-            return order["id"].ToString();
-            Console.WriteLine($"RazorpayPaymentId: {payment.RazorpayPaymentId}");
+        //    await _paymentRepository.AddAsync(payment);
+        //    //return order["id"].ToString();
+        //    return order["id"].ToString();
+        //    Console.WriteLine($"RazorpayPaymentId: {payment.RazorpayPaymentId}");
 
-        }
+        //}
 
-        public async Task<bool> VerifyPaymentAsync(VerifyPaymentDto dto)
-        {
-            var payment = await _paymentRepository.GetByOrderIdAsync(dto.RazorpayOrderId);
-            if (payment == null) return false;
+        //public async Task<bool> VerifyPaymentAsync(VerifyPaymentDto dto)
+        //{
+        //    var payment = await _paymentRepository.GetByOrderIdAsync(dto.RazorpayOrderId);
+        //    if (payment == null) return false;
 
-            string generatedSignature = GetSignature(dto.RazorpayOrderId, dto.RazorpayPaymentId, "Y938V0KAAzaJIketwxBQOTlB");
-            if (generatedSignature != dto.RazorpaySignature) return false;
+        //    string generatedSignature = GetSignature(dto.RazorpayOrderId, dto.RazorpayPaymentId, "Y938V0KAAzaJIketwxBQOTlB");
+        //    if (generatedSignature != dto.RazorpaySignature) return false;
 
-            payment.RazorpayPaymentId = dto.RazorpayPaymentId;
-            payment.RazorpaySignature = dto.RazorpaySignature;
-            payment.IsPaid = true;
+        //    payment.RazorpayPaymentId = dto.RazorpayPaymentId;
+        //    payment.RazorpaySignature = dto.RazorpaySignature;
+        //    payment.IsPaid = true;
 
-            //await _paymentRepository.UpdateAsync(payment);
-            return true;
-        }
+        //    //await _paymentRepository.UpdateAsync(payment);
+        //    return true;
+        //}
 
         private string GetSignature(string orderId, string paymentId, string secret)
         {

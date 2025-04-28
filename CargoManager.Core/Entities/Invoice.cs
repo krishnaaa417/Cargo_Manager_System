@@ -10,28 +10,28 @@ namespace CargoManager.Core.Entities
 {
     public class Invoice
     {
-        [Key]
-        public int Id { get; set; }
+        //[Key]
+        //public int Id { get; set; }
 
-        [Required]
-        public string InvoiceNumber { get; set; } = null!;
+        //[Required]
+        //public string InvoiceNumber { get; set; } = null!;
 
-        [Required]
-        public int CargoId { get; set; }
+        //[Required]
+        //public int CargoId { get; set; }
 
-        [Required]
-        public int CustomerId { get; set; }
+        //[Required]
+        //public int CustomerId { get; set; }
 
-        public decimal Amount { get; set; }
+        //public decimal Amount { get; set; }
 
-        public DateTime InvoiceDate { get; set; } = DateTime.UtcNow;
+        //public DateTime InvoiceDate { get; set; } = DateTime.UtcNow;
 
-        public string Status { get; set; } = "Pending";
+        //public string Status { get; set; } = "Pending";
 
-        [ForeignKey("CargoId")]
-        public Cargo? Cargo { get; set; }
+        //[ForeignKey("CargoId")]
+        //public Cargo? Cargo { get; set; }
 
-        [ForeignKey("CustomerId")]
-        public Customer? Customer { get; set; }
+        //[ForeignKey("CustomerId")]
+        //public Customer? Customer { get; set; }
     }
 }

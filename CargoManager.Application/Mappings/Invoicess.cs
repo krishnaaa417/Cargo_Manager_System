@@ -13,8 +13,8 @@ namespace CargoManager.Application.Mappings
     {
         public Invoicess()
         {
-            CreateMap<Invoice, InvoiceDto>().ReverseMap();
-            CreateMap<CreateInvoiceDto, Invoice>();
+            //CreateMap<Invoice, InvoiceDto>().ReverseMap();
+            //CreateMap<CreateInvoiceDto, Invoice>();
         }
     }
 }

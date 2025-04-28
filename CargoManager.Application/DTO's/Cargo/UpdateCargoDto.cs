@@ -13,9 +13,9 @@ namespace CargoManager.Application.DTO_s.Cargo
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public double Weight { get; set; }
-        public string Destination { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public decimal Weight { get; set; }
+        public int CustomerId { get; set; }
         //public DateTime DepartureDate { get; set; }
     }
 }

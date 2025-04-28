@@ -14,7 +14,7 @@ namespace CargoManager.Application.Interfaces
         //Task<IEnumerable<InvoiceDto>> GetAllInvoicesAsync();
         //Task<InvoiceDto?> GetInvoiceByNumberAsync(string invoiceNumber);
 
-        Task<Invoice> CreateInvoiceAsync(int customerId, int cargoId, decimal amount);
-        Task<Invoice?> GetInvoiceAsync(int id);
+        //Task<Invoice> CreateInvoiceAsync(int customerId, int cargoId, decimal amount);
+        //Task<Invoice?> GetInvoiceAsync(int id);
     }
 }

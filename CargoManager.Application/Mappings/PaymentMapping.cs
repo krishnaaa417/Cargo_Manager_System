@@ -11,10 +11,10 @@ namespace CargoManager.Application.Mappings
 {
     public class PaymentMapping : Profile
     {
-        public PaymentMapping()
-        {
-            CreateMap<Payment, CreatePaymentDto>().ReverseMap();
-            CreateMap<Payment, PaymentDto>().ReverseMap();
-        }
+        //public PaymentMapping()
+        //{
+        //    CreateMap<Payment, CreatePaymentDto>().ReverseMap();
+        //    CreateMap<Payment, PaymentDto>().ReverseMap();
+        //}
     }
 }

@@ -8,7 +8,7 @@ namespace CargoManager.Application.DTO_s.PaymentDTO_s
 {
     public class CreateOrderRequestDto
     {
-        public int Amount { get; set; } // In INR paisa, so ₹10 = 1000
+        public decimal Amount { get; set; } // In INR paisa, so ₹10 = 1000
         public string Currency { get; set; } = "INR";
         public string Receipt { get; set; }
     }

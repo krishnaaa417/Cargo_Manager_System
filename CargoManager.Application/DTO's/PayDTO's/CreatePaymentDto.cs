@@ -8,6 +8,6 @@ namespace CargoManager.Application.DTO_s.PayDTO_s
 {
     public class CreatePaymentDto
     {
-        public decimal Amount {  get; set; }
+        //public decimal Amount {  get; set; }
     }
 }
