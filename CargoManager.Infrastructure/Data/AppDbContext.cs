@@ -20,13 +20,13 @@ namespace CargoManager.Infrastructure.Data
 
         public DbSet<CargoTracking> CargoTrackings { get; set; }
 
-        public DbSet<PaymentOrder> PaymentOrders { get; set; }
+       // public DbSet<PaymentOrder> PaymentOrders { get; set; }
 
-        public DbSet<Payment> Payments { get; set; }
+        //public DbSet<Payment> Payments { get; set; }
 
         public DbSet<Delivery> Deliveries { get; set; }
 
-        public DbSet<Invoice> Invoices { get; set; }
+       // public DbSet<Invoice> Invoices { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -45,8 +45,17 @@ namespace CargoManager.Infrastructure.Data
                 .WithMany(c => c.Trackings)
                 .HasForeignKey(ct => ct.CargoId)
                 .OnDelete(DeleteBehavior.Cascade);
-        }
+
+        
+            //modelBuilder.Entity<Payment>()
+            //    .Property(p => p.Amount)
+            //    .HasColumnType("decimal(18,2)"); // Specify precision and scale
+        
+
 
 
     }
+
+
+}
 }

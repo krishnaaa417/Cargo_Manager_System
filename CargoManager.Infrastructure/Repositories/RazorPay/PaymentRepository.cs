@@ -10,25 +10,25 @@ using System.Threading.Tasks;
 
 namespace CargoManager.Infrastructure.Repositories.RazorPay
 {
-    public class PaymentRepository : GenericRepository<Payment>, IPaymentRepository
+    public class PaymentRepository 
     {
         private readonly AppDbContext _context;
 
-        public PaymentRepository(AppDbContext context) : base(context)
+        public PaymentRepository(AppDbContext context) 
         {
             _context = context;
         }
 
-        public async Task<Payment?> GetByOrderIdAsync(string orderId)
-        {
-            return await _context.Payments.FirstOrDefaultAsync(p => p.RazorpayOrderId == orderId);
-        }
+        //public async Task<Payment?> GetByOrderIdAsync(string orderId)
+        //{
+        //    return await _context.Payments.FirstOrDefaultAsync(p => p.RazorpayOrderId == orderId);
+        //}
 
-        public async Task UpdateAsync(Payment entity)
-        {
-            _context.Payments.Update(entity); // Use the Payments DbSet directly
-            await _context.SaveChangesAsync();
-        }
+        //public async Task UpdateAsync(Payment entity)
+        //{
+        //    _context.Payments.Update(entity); // Use the Payments DbSet directly
+        //    await _context.SaveChangesAsync();
+        //}
 
     }
 }

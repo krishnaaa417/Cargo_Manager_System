@@ -10,34 +10,31 @@ namespace CargoManager.API.Controllers
     [ApiController]
     public class InvoiceController : ControllerBase
     {
-        private readonly IInvoiceService _invoiceService;
+        
 
-        public InvoiceController(IInvoiceService invoiceService)
-        {
-            _invoiceService = invoiceService;
-        }
+        
 
 
-        [HttpPost("create")]
-        public async Task<IActionResult> CreateInvoice([FromBody] Invoice invoice)
-        {
-            if (invoice == null)
-            {
-                return BadRequest("Invoice data is required.");
-            }
+        //[HttpPost("create")]
+        //public async Task<IActionResult> CreateInvoice([FromBody] Invoice invoice)
+        //{
+        //    if (invoice == null)
+        //    {
+        //        return BadRequest("Invoice data is required.");
+        //    }
 
-            var createdInvoice = await _invoiceService.CreateInvoiceAsync(invoice.CustomerId, invoice.CargoId, invoice.Amount);
-            return Ok(createdInvoice);
-        }
+        //    var createdInvoice = await _invoiceService.CreateInvoiceAsync(invoice.CustomerId, invoice.CargoId, invoice.Amount);
+        //    return Ok(createdInvoice);
+        //}
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetInvoice(int id)
-        {
-            var invoice = await _invoiceService.GetInvoiceAsync(id);
-            if (invoice == null) return NotFound("Invoice not found.");
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetInvoice(int id)
+        //{
+        //    var invoice = await _invoiceService.GetInvoiceAsync(id);
+        //    if (invoice == null) return NotFound("Invoice not found.");
 
-            return Ok(invoice);
-        }
+        //    return Ok(invoice);
+        //}
 
         // POST: api/Invoice
         //[HttpPost]
